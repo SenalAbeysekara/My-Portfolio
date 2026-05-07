@@ -2,13 +2,15 @@
 
 # 🌐 Senal Abeysekara — Personal Portfolio
 
+> *"Creating Innovative, Functional, and User-Friendly Websites for Digital Solutions."*
+
+</div>
+
 ---
 
 ## 👤 About Me
 
 I'm **Senal Abeysekara**, a Computer Science undergraduate and aspiring Full Stack Developer passionate about building scalable web applications and real world digital solutions. Experienced in MERN stack development and continuously exploring AI/ML and DevOps.
-
-> *"Creating Innovative, Functional, and User-Friendly Websites for Digital Solutions."*
 
 ---
 
@@ -29,6 +31,7 @@ I'm **Senal Abeysekara**, a Computer Science undergraduate and aspiring Full Sta
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=flat-square&logo=react-router&logoColor=white)
@@ -39,10 +42,11 @@ I'm **Senal Abeysekara**, a Computer Science undergraduate and aspiring Full Sta
 ![Lottie](https://img.shields.io/badge/Lottie-Files-00DDB4?style=flat-square)
 
 ### Backend & Database
+
 ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
 
-
 ### Build & Deployment
+
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 
@@ -51,6 +55,7 @@ I'm **Senal Abeysekara**, a Computer Science undergraduate and aspiring Full Sta
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js v18+
 - A [Supabase](https://supabase.com) account & project
 
@@ -83,6 +88,7 @@ VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 Create the following tables in your Supabase project:
 
 **`projects`** table:
+
 | Column | Type |
 |---|---|
 | id | int8 (PK) |
@@ -96,6 +102,7 @@ Create the following tables in your Supabase project:
 | category | text |
 
 **`certificates`** table:
+
 | Column | Type |
 |---|---|
 | id | int8 (PK) |
@@ -105,6 +112,7 @@ Create the following tables in your Supabase project:
 | image | text |
 
 **`services`** table:
+
 | Column | Type |
 |---|---|
 | id | int8 (PK) |
@@ -172,11 +180,13 @@ my-portfolio/
 
 1. Push your code to GitHub
 2. Import the repo on [Vercel](https://vercel.com)
-3. Add your environment variables in Vercel dashboard:
-   ```
-   VITE_SUPABASE_URL      = your_supabase_url
-   VITE_SUPABASE_ANON_KEY = your_supabase_anon_key
-   ```
+3. Add your environment variables in the Vercel dashboard:
+
+```
+VITE_SUPABASE_URL      = your_supabase_url
+VITE_SUPABASE_ANON_KEY = your_supabase_anon_key
+```
+
 4. Deploy — Vercel auto-detects Vite config ✅
 
 ---
