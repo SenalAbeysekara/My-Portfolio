@@ -80,47 +80,7 @@ Create a `.env` file in the project root:
 VITE_SUPABASE_URL=your_supabase_project_url
 VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
-
-> You can find these in your Supabase dashboard under **Project Settings → API**.
-
-### 4. Set Up Supabase Tables
-
-Create the following tables in your Supabase project:
-
-**`projects`** table:
-
-| Column | Type |
-|---|---|
-| id | int8 (PK) |
-| title | text |
-| description | text |
-| image | text |
-| technologies | text[] |
-| github | text |
-| demo | text |
-| features | text[] |
-| category | text |
-
-**`certificates`** table:
-
-| Column | Type |
-|---|---|
-| id | int8 (PK) |
-| title | text |
-| issuer | text |
-| date | text |
-| image | text |
-
-**`services`** table:
-
-| Column | Type |
-|---|---|
-| id | int8 (PK) |
-| title | text |
-| description | text |
-| features | text[] |
-
-### 5. Run the Development Server
+### 4. Run the Development Server
 
 ```bash
 npm run dev
@@ -133,7 +93,7 @@ Visit `http://localhost:5173` to see your portfolio live. 🎉
 ## 📁 Project Structure
 
 ```
-my-portfolio/
+My-Portfolio/
 ├── public/
 │   ├── photo.png               # Profile photo
 │   ├── lottie.json             # Hero animation
@@ -173,27 +133,6 @@ my-portfolio/
 ├── tailwind.config.js
 └── package.json
 ```
-
----
-
-## 🌐 Deployment on Vercel
-
-1. Push your code to GitHub
-2. Import the repo on [Vercel](https://vercel.com)
-3. Add your environment variables in the Vercel dashboard:
-
-```
-VITE_SUPABASE_URL      = your_supabase_url
-VITE_SUPABASE_ANON_KEY = your_supabase_anon_key
-```
-
-4. Deploy — Vercel auto-detects Vite config ✅
-
----
-
-<div align="center">
-
-**Built with 💜 by Thejan Mihisara**
 
 ⭐ If you like this portfolio, give it a star!
 
