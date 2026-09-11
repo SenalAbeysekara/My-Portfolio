@@ -117,7 +117,7 @@ const techStacks = [
   { icon: "jira.svg", language: "Jira" },
   { icon: "confluence.svg", language: "Confluence" },
   { icon: "notion.svg", language: "Notion" },
-  { icon: "slack.svg", language: "Slack" },
+  { icon: "https://cdn.simpleicons.org/laravel/FF2D20", language: "Laravel" },
   { icon: "powerbi.svg", language: "Power BI" },
   { icon: "clickup.svg", language: "ClickUp" },
 ];

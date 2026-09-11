@@ -157,7 +157,7 @@ const ProjectDetails = () => {
         ...selectedProject,
         Features: selectedProject.Features || [],
         TechStack: selectedProject.TechStack || [],  // **Corrected: Ensuring TechStack is an array**
-        Github: selectedProject.Github || 'https://github.com/ThejanMihisara',
+        Github: selectedProject.Github || 'https://github.com/SenalAbeysekara',
       };
       setProject(enhancedProject);
     }

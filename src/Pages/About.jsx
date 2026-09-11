@@ -94,11 +94,12 @@ const AboutPage = () => {
         throw new Error("Error fetching counts");
       }
 
-      // Calculate years of experience
+      // Round development experience to the nearest year.
       const startDate = new Date("2024-01-06");  // The start date when the experience began
       const today = new Date();
-      const experienceYears = today.getFullYear() - startDate.getFullYear() - 
-        (today < new Date(today.getFullYear(), startDate.getMonth(), startDate.getDate()) ? 1 : 0);
+      const experienceYears = Math.round(
+        (today - startDate) / (365.25 * 24 * 60 * 60 * 1000)
+      );
 
       // Update the states with the fetched counts and calculated experience
       setProjectsCount(projectsData.length);
@@ -147,11 +148,11 @@ const AboutPage = () => {
               data-aos="fade-right"
               data-aos-duration="1500"
             >
-              A Computer Science undergraduate and aspiring Full Stack Developer with a strong interest in building scalable web applications and real world solutions. Experienced in MERN stack development and continuously exploring AI/ML and DevOps. A collaborative learner passionate about innovation, problem solving, and contributing to meaningful and innovative software solutions.
+              A Computer Science undergraduate and Full Stack Developer with experience building scalable web applications. Skilled in MERN and Laravel development, with experience delivering personal and professional projects. Continuously exploring AI/ML and DevOps, I enjoy turning ideas into reliable, user focused software solutions.
             </p>
 
             <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 lg:gap-4 lg:px-0 w-full">
-              <a href="https://drive.google.com/file/d/1gdB1x5XiuiNlR5w8vG84_xaDH1pNgsOP/view?usp=sharing" className="w-full lg:w-auto">
+              <a href="https://drive.google.com/file/d/1HenNCl47Xzajb9LmMXr71tpjUz37kly4/view?usp=sharing" className="w-full lg:w-auto">
                 <button
                   data-aos="fade-up"
                   data-aos-duration="800"
@@ -184,9 +185,9 @@ const AboutPage = () => {
                 <StatCard
                   icon={Code}
                   color="from-[#6366f1] to-[#a855f7]"
-                  value={projectsCount}
-                  label="Total Projects"
-                  description="Innovative web solutions crafted"
+                  value="10+"
+                  label="Featured Projects"
+                  description="Personal work showcased with additional professional projects delivered"
                   animation="fade-right"
                 />
                 <StatCard
@@ -202,7 +203,7 @@ const AboutPage = () => {
                   color="from-[#6366f1] to-[#a855f7]"
                   value={experience}
                   label="Years of Experience"
-                  description="Continuous learning journey"
+                  description="Professional development experience"
                   animation="fade-left"
                 />
               </>

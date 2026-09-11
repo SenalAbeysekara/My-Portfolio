@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import Portofolio from "./Pages/Portofolio";
 import Services from "./Pages/Services";
 import ContactPage from "./Pages/Contact";
+import ProfessionalExperience from "./Pages/ProfessionalExperience";
 import Education from "./Pages/Education";
 import ProjectDetails from "./components/ProjectDetail";
 import WelcomeScreen from "./Pages/WelcomeScreen";
@@ -32,6 +33,7 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
           <About />
           <Portofolio />
           <Services />
+          <ProfessionalExperience />
           <Education />
           <ContactPage />
           <footer>

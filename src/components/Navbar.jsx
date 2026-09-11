@@ -11,6 +11,7 @@ const Navbar = () => {
         { href: "#About", label: "About" },
         { href: "#Portofolio", label: "Portofolio" },
         { href: "#Services", label: "Services" },
+        { href: "#Experience", label: "Experience" },
         { href: "#Education", label: "Education" },
         { href: "#Contact", label: "Contact" },
     ];
@@ -92,7 +93,7 @@ const Navbar = () => {
         
                     {/* Desktop Navigation */}
                     <div className="hidden md:block">
-                        <div className="ml-8 flex items-center space-x-8">
+                        <div className="ml-3 flex items-center space-x-3 lg:ml-6 lg:space-x-6 xl:ml-8 xl:space-x-8">
                             {navItems.map((item) => (
                                 <a
                                     key={item.label}
