@@ -1,10 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { supabase } from "../supabase";
 import {
   ArrowLeft, ExternalLink, Github, Code2, Star,
   ChevronRight, Layers, Layout, Globe, Package, Cpu, Code, Users, User,
 } from "lucide-react";
-import Swal from 'sweetalert2';
+
+const STOCKVISION_PROJECT = 'StockVision';
+
+const removeWordDashes = (text = '') => text.replace(/[\u2010-\u2015-]/g, ' ');
+
+const prepareProjectForDisplay = (project) => {
+  const isStockVision = project.name?.includes(STOCKVISION_PROJECT);
+
+  if (!isStockVision) return project;
+
+  const techStack = (project.TechStack || []).map((tech) =>
+    tech === 'PostgreSQL' ? 'MySQL' : tech
+  );
+
+  ['Pandas', 'NumPy'].forEach((tech) => {
+    if (!techStack.some((item) => item.toLowerCase() === tech.toLowerCase())) {
+      techStack.push(tech);
+    }
+  });
+
+  return {
+    ...project,
+    name: removeWordDashes(project.name),
+    description: removeWordDashes(project.description),
+    Features: (project.Features || []).map(removeWordDashes),
+    TechStack: techStack,
+  };
+};
 
 const TECH_ICONS = {
   React: Globe,
@@ -54,7 +82,7 @@ const FeatureItem = ({ feature }) => {
         <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-full blur group-hover:opacity-100 opacity-0 transition-opacity duration-300" />
         <div className="relative w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 group-hover:scale-125 transition-transform duration-300" />
       </div>
-      <span className="text-sm md:text-base text-gray-300 group-hover:text-white transition-colors">
+      <span className="text-sm md:text-base text-gray-300 group-hover:text-white transition-colors text-justify">
         {feature}
       </span>
     </li>
@@ -125,22 +153,6 @@ const ContributionInfo = ({ contributionType, role }) => {
   );
 };
 
-const handleGithubClick = (githubLink) => {
-  if (githubLink === 'Private') {
-    Swal.fire({
-      icon: 'info',
-      title: 'Source Code Private',
-      text: 'Maaf, source code untuk proyek ini bersifat privat.',
-      confirmButtonText: 'Mengerti',
-      confirmButtonColor: '#3085d6',
-      background: '#030014',
-      color: '#ffffff'
-    });
-    return false;
-  }
-  return true;
-};
-
 const ProjectDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -151,16 +163,35 @@ const ProjectDetails = () => {
     window.scrollTo(0, 0);
     const storedProjects = JSON.parse(localStorage.getItem("projects")) || [];
     const selectedProject = storedProjects.find((p) => String(p.id) === id);
-   
+
     if (selectedProject) {
-      const enhancedProject = {
+      const enhancedProject = prepareProjectForDisplay({
         ...selectedProject,
         Features: selectedProject.Features || [],
-        TechStack: selectedProject.TechStack || [],  // **Corrected: Ensuring TechStack is an array**
+        TechStack: selectedProject.TechStack || [],
         Github: selectedProject.Github || 'https://github.com/SenalAbeysekara',
-      };
+      });
       setProject(enhancedProject);
     }
+
+    const loadLatestProject = async () => {
+      const { data, error } = await supabase
+        .from("projects")
+        .select("*")
+        .eq("id", id)
+        .single();
+
+      if (error || !data) return;
+
+      const updatedProjects = [
+        ...storedProjects.filter((storedProject) => String(storedProject.id) !== id),
+        data,
+      ];
+      localStorage.setItem("projects", JSON.stringify(updatedProjects));
+      setProject(prepareProjectForDisplay(data));
+    };
+
+    loadLatestProject();
   }, [id]);
 
   if (!project) {
@@ -173,6 +204,9 @@ const ProjectDetails = () => {
       </div>
     );
   }
+
+  const isPrivateRepository = project.name?.includes(STOCKVISION_PROJECT);
+  const hasRepositoryLink = project.Github && project.Github !== 'Private';
 
   return (
     <div className="min-h-screen bg-[#030014] px-[2%] sm:px-0 relative overflow-hidden">
@@ -216,7 +250,7 @@ const ProjectDetails = () => {
               </div>
 
               <div className="prose prose-invert max-w-none">
-                <p className="text-base md:text-lg text-gray-300/90 leading-relaxed">
+                <p className="text-base md:text-lg text-gray-300/90 leading-relaxed text-justify">
                   {project.description}
                 </p>
               </div>
@@ -242,17 +276,27 @@ const ProjectDetails = () => {
                   <span className="relative font-medium">Live Demo</span>
                 </a>
 
-                <a
-                  href={project.Github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative inline-flex items-center space-x-1.5 md:space-x-2 px-4 md:px-8 py-2.5 md:py-4 bg-gradient-to-r from-purple-600/10 to-pink-600/10 hover:from-purple-600/20 hover:to-pink-600/20 text-purple-300 rounded-xl transition-all duration-300 border border-purple-500/20 hover:border-purple-500/40 backdrop-blur-xl overflow-hidden text-sm md:text-base"
-                  onClick={(e) => !handleGithubClick(project.Github) && e.preventDefault()}
-                >
-                  <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-purple-600/10 to-pink-600/10 transition-transform duration-300 group-hover:translate-y-[0%]" />
-                  <Github className="relative w-4 h-4 md:w-5 md:h-5 group-hover:rotate-12 transition-transform" />
-                  <span className="relative font-medium">Github</span>
-                </a>
+                {hasRepositoryLink ? (
+                  <a
+                    href={project.Github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative inline-flex items-center space-x-1.5 md:space-x-2 px-4 md:px-8 py-2.5 md:py-4 bg-gradient-to-r from-purple-600/10 to-pink-600/10 hover:from-purple-600/20 hover:to-pink-600/20 text-purple-300 rounded-xl transition-all duration-300 border border-purple-500/20 hover:border-purple-500/40 backdrop-blur-xl overflow-hidden text-sm md:text-base"
+                    title={isPrivateRepository ? 'Private repository — accessible to authorized GitHub users' : 'View source code on GitHub'}
+                  >
+                    <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-purple-600/10 to-pink-600/10 transition-transform duration-300 group-hover:translate-y-[0%]" />
+                    <Github className="relative w-4 h-4 md:w-5 md:h-5 group-hover:rotate-12 transition-transform" />
+                    <span className="relative font-medium">{isPrivateRepository ? 'Private Repository' : 'GitHub'}</span>
+                  </a>
+                ) : (
+                  <div
+                    className="inline-flex items-center space-x-1.5 md:space-x-2 px-4 md:px-8 py-2.5 md:py-4 bg-gradient-to-r from-purple-600/10 to-pink-600/10 text-purple-300 rounded-xl border border-purple-500/20 text-sm md:text-base"
+                    title="The source code for this project is private"
+                  >
+                    <Github className="w-4 h-4 md:w-5 md:h-5" />
+                    <span className="font-medium">Private Repository</span>
+                  </div>
+                )}
               </div>
 
               <div className="space-y-4 md:space-y-6">

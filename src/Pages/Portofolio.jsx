@@ -176,7 +176,17 @@ export default function Portofolio() {
     else setShowAllCertificates(prev => !prev);
   }, []);
 
-  const displayedProjects = showAllProjects ? projects : projects.slice(0, initialItems);
+  const stockVisionProject = projects.find((project) => project.name?.includes("StockVision"));
+  const firstProject = projects[0];
+  const orderedProjects = stockVisionProject && firstProject && stockVisionProject !== firstProject
+    ? [
+        firstProject,
+        stockVisionProject,
+        ...projects.filter((project) => project !== firstProject && project !== stockVisionProject),
+      ]
+    : projects;
+
+  const displayedProjects = showAllProjects ? orderedProjects : orderedProjects.slice(0, initialItems);
   const displayedCertificates = showAllCertificates ? certificates : certificates.slice(0, initialItems);
 
   return (
