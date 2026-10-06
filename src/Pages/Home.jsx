@@ -79,7 +79,7 @@ const SocialLink = memo(({ icon: Icon, link }) => (
 const TYPING_SPEED = 100;
 const ERASING_SPEED = 50;
 const PAUSE_DURATION = 2000;
-const WORDS = ["Computer Science Undergraduate", "Tech Innovator", "Aspiring Full Stack Developer", "Lifelong Learner","Currently Exploring DevOps"];
+const WORDS = ["Computer Science Graduate", "Tech Innovator", "Aspiring Full Stack Developer", "Lifelong Learner","Currently Exploring DevOps"];
 const SOCIAL_LINKS = [
   { icon: Github, link: "https://github.com/SenalAbeysekara" },
   { icon: Linkedin, link: "https://www.linkedin.com/in/senal-abeysekara-67462a2a6/" }

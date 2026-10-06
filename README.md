@@ -10,7 +10,7 @@
 
 ## 👤 About Me
 
-I'm **Senal Abeysekara**, a Computer Science undergraduate and aspiring Full Stack Developer passionate about building scalable web applications and real world digital solutions. Experienced in MERN stack development and continuously exploring AI/ML and DevOps.
+I'm **Senal Abeysekara**, a Computer Science graduate and aspiring Full Stack Developer passionate about building scalable web applications and real world digital solutions. Experienced in MERN stack development and continuously exploring AI/ML and DevOps.
 
 ---
 

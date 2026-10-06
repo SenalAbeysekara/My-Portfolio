@@ -148,7 +148,7 @@ const AboutPage = () => {
               data-aos="fade-right"
               data-aos-duration="1500"
             >
-              A Computer Science undergraduate and Full Stack Developer with experience building scalable web applications. Skilled in MERN and Laravel development, with experience delivering personal and professional projects. Continuously exploring AI/ML and DevOps, I enjoy turning ideas into reliable, user focused software solutions.
+              A Computer Science graduate and Full Stack Developer with experience building scalable web applications. Skilled in MERN and Laravel development, with experience delivering personal and professional projects. Continuously exploring AI/ML and DevOps, I enjoy turning ideas into reliable, user focused software solutions.
             </p>
 
             <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 lg:gap-4 lg:px-0 w-full">

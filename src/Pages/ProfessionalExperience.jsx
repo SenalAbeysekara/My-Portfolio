@@ -45,11 +45,18 @@ const ProfessionalExperience = () => {
                   <Building2 className="h-4 w-4" />
                   Applantics (Pvt) Ltd
                 </p>
-                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-gray-400 sm:text-base">
-                  Developing and maintaining POS and ERP systems with Laravel, TypeScript, and React. Building practical experience across the software development and deployment lifecycle.
-                </p>
+                <ul className="mt-4 max-w-2xl list-disc space-y-2 pl-5 text-justify text-sm leading-relaxed text-gray-400 marker:text-violet-400 sm:text-base">
+                  {[
+                    "Developed and maintained POS and ERP system modules using Laravel, React, TypeScript, Tailwind CSS, and MySQL, contributing to both frontend and backend development.",
+                    "Integrated third-party services and APIs, including Google APIs, email services, and SMS APIs, to support authentication, notifications, and automated application workflows.",
+                    "Utilized AI-assisted development tools such as Claude Code and OpenAI Codex to support software development, including code reviews, debugging, refactoring, and issue resolution.",
+                    "Gained hands-on experience in application deployment and production environment management using cPanel, including database configuration, environment setup, and deployment troubleshooting.",
+                  ].map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {["Laravel", "TypeScript", "React", "POS Systems", "ERP Systems", "Deployment"].map((skill) => (
+                  {["Laravel", "TypeScript", "React", "POS Systems", "ERP Systems", "Deployment", "Tailwind CSS", "MySQL", "API Integration", "cPanel"].map((skill) => (
                     <span
                       key={skill}
                       className="rounded-full border border-violet-400/30 bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-200"
@@ -63,7 +70,7 @@ const ProfessionalExperience = () => {
 
             <div className="flex w-fit flex-shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-violet-400/30 bg-violet-500/10 px-4 py-2 text-sm font-medium text-violet-200">
               <CalendarDays className="h-4 w-4" />
-              May 2026 - Present
+              Since May 2026
             </div>
           </div>
         </article>
