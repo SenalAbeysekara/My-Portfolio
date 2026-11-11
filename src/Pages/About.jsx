@@ -94,12 +94,8 @@ const AboutPage = () => {
         throw new Error("Error fetching counts");
       }
 
-      // Round development experience to the nearest year.
-      const startDate = new Date("2024-01-06");  // The start date when the experience began
-      const today = new Date();
-      const experienceYears = Math.round(
-        (today - startDate) / (365.25 * 24 * 60 * 60 * 1000)
-      );
+      // Professional experience (internship started May 2026) shown as 1 year.
+      const experienceYears = 1;
 
       // Update the states with the fetched counts and calculated experience
       setProjectsCount(projectsData.length);
