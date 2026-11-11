@@ -48,9 +48,9 @@ const ProfessionalExperience = () => {
                 <ul className="mt-4 max-w-2xl list-disc space-y-2 pl-5 text-justify text-sm leading-relaxed text-gray-400 marker:text-violet-400 sm:text-base">
                   {[
                     "Developed and maintained POS and ERP system modules using Laravel, React, TypeScript, Tailwind CSS, and MySQL, contributing to both frontend and backend development.",
-                    "Integrated third-party services and APIs, including Google APIs, email services, and SMS APIs, to support authentication, notifications, and automated application workflows.",
-                    "Utilized AI-assisted development tools such as Claude Code and OpenAI Codex to support software development, including code reviews, debugging, refactoring, and issue resolution.",
-                    "Gained hands-on experience in application deployment and production environment management using cPanel, including database configuration, environment setup, and deployment troubleshooting.",
+                    "Integrated third party services and APIs, including Google APIs, email services, and SMS APIs, to support authentication, notifications, and automated application workflows.",
+                    "Utilized AI assisted development tools such as Claude Code and OpenAI Codex to support software development, including code reviews, debugging, refactoring, and issue resolution.",
+                    "Gained hands on experience in application deployment and production environment management using cPanel, including database configuration, environment setup, and deployment troubleshooting.",
                   ].map((point) => (
                     <li key={point}>{point}</li>
                   ))}
@@ -70,7 +70,7 @@ const ProfessionalExperience = () => {
 
             <div className="flex w-fit flex-shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-violet-400/30 bg-violet-500/10 px-4 py-2 text-sm font-medium text-violet-200">
               <CalendarDays className="h-4 w-4" />
-              Since May 2026
+              May 2026 - Nov 2026
             </div>
           </div>
         </article>
